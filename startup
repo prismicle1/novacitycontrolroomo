@@ -1,0 +1,51 @@
+-- Set your password here
+local correctPassword = "yourpassword"
+
+-- Clear screen
+term.clear()
+term.setCursorPos(1,1)
+
+-- Get screen size
+local w, h = term.getSize()
+
+-- Centered "Enter Password" text
+local enterText = "Enter Password:"
+term.setCursorPos((w - #enterText) // 2, h // 2 - 2)
+print(enterText)
+
+-- Draw a simple input box
+local boxWidth = 20
+local boxStartX = (w - boxWidth) // 2
+local boxY = h // 2
+
+-- Draw top of box
+term.setCursorPos(boxStartX, boxY)
+write("+" .. string.rep("-", boxWidth - 2) .. "+")
+
+-- Draw middle (where typing will happen)
+term.setCursorPos(boxStartX, boxY + 1)
+write("|" .. string.rep(" ", boxWidth - 2) .. "|")
+
+-- Draw bottom of box
+term.setCursorPos(boxStartX, boxY + 2)
+write("+" .. string.rep("-", boxWidth - 2) .. "+")
+
+-- Move cursor inside the box for typing
+term.setCursorPos(boxStartX + 1, boxY + 1)
+local input = read()
+
+-- Clear screen again
+term.clear()
+term.setCursorPos(1,1)
+
+-- Check password
+if input == correctPassword then
+    print("Access Granted")
+    sleep(2)
+    term.clear()
+    term.setCursorPos(1,1)
+    print("Main Screen:")
+    print("[File: Organizations]")
+else
+    print("Access Denied")
+end
