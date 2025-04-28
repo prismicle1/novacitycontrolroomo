@@ -1,76 +1,25 @@
--- Initialize
-local correctPassword = "wasteland2025"  -- Set your password here
+-- Set the correct password
+local correctPassword = "wasteland2025"  -- Change this to your desired password
 local userInput
 
--- Step 1: Password Input
+-- Function to check password
+function checkPassword(input)
+    if input == correctPassword then
+        return true
+    else
+        return false
+    end
+end
+
+-- Start the program
 print("Enter the password to access the control room:")
 
+-- Read user input
 userInput = read()
 
 -- Check if the password is correct
-if userInput == correctPassword then
+if checkPassword(userInput) then
     print("Password accepted. Access granted.")
 else
     print("Incorrect password. Access denied.")
-    return -- Stop execution if incorrect password
-end
-
--- Step 2: Display Files (after correct password)
-while true do
-    print("Accessing control room...")
-    print("Select a file or command:")
-    print("1. Organizations")
-    print("2. Militaries")
-    print("3. Enter Commands")
-
-    -- Get user selection
-    local choice = tonumber(read())
-
-    -- Step 3: File Selection and Command Entry
-    if choice == 1 then
-        print("Opening file: Organizations")
-        -- Simulate displaying organizations data
-        print("Organizations: Megacorp, Techno Industries, Titan Holdings")
-
-    elseif choice == 2 then
-        print("Opening file: Militaries")
-        -- Simulate displaying militaries data
-        print("Militaries: Vanguard Defense, Steel Legion, Silent Warriors")
-
-    elseif choice == 3 then
-        print("Enter Command (Elevator up, Elevator down, Vault open, Vault close):")
-        local command = read()
-
-        if command == "elevator up" then
-            print("Elevator moving up...")
-            -- Trigger elevator up action
-            -- For example: redstone.setOutput("side", true) for the elevator mechanism
-        elseif command == "elevator down" then
-            print("Elevator moving down...")
-            -- Trigger elevator down action
-            -- Example: redstone.setOutput("side", false)
-        elseif command == "vault open" then
-            print("Opening vault...")
-            -- Open vault mechanism with redstone
-            -- Example: redstone.setOutput("side", true)
-        elseif command == "vault close" then
-            print("Closing vault...")
-            -- Close vault mechanism with redstone
-            -- Example: redstone.setOutput("side", false)
-        else
-            print("Unknown command. Please try again.")
-        end
-
-    else
-        print("Invalid selection. Try again.")
-    end
-
-    -- After one operation, return to the main menu
-    print("Would you like to select another option? (Y/N)")
-    local again = read()
-
-    if again:lower() ~= "y" then
-        print("Exiting control room.")
-        break
-    end
 end
