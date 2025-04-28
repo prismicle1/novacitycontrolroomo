@@ -1,29 +1,22 @@
--- Set the correct password
-local correctPassword = "wasteland2025"  -- Change this to your desired password
+-- Set your password here
+local correctPassword = "yourpassword"  -- Change this to your desired password
 
--- Function to check password
-function checkPassword(input)
-    if input == correctPassword then
-        return true
-    else
-        return false
-    end
+-- Ask for the password when the computer starts
+term.clear()
+term.setCursorPos(1, 1)
+print("Enter password:")
+
+-- Get the user input (password)
+local input = read()
+
+-- Check if the password is correct
+if input == correctPassword then
+    print("Access Granted")
+    sleep(2)  -- Wait for 2 seconds before showing the main screen
+    term.clear()
+    term.setCursorPos(1, 1)
+    print("Main Screen:")  -- Main screen title
+    print("[File: Organizations]")  -- This is your placeholder for the file
+else
+    print("Access Denied")
 end
-
--- Start the program
-while true do
-    print("Enter the password to access the control room:")
-
-    -- Read user input
-    local userInput = read()
-
-    -- Check if the password is correct
-    if checkPassword(userInput) then
-        print("Password accepted. Access granted.")
-        break  -- Exit the loop and proceed with the rest of the program
-    else
-        print("Incorrect password. Please try again.")
-    end
-end
-
--- Here you can place the rest of your control room code after the password is entered
