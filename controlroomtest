@@ -1,6 +1,5 @@
 -- Set the correct password
 local correctPassword = "wasteland2025"  -- Change this to your desired password
-local userInput
 
 -- Function to check password
 function checkPassword(input)
@@ -12,14 +11,19 @@ function checkPassword(input)
 end
 
 -- Start the program
-print("Enter the password to access the control room:")
+while true do
+    print("Enter the password to access the control room:")
 
--- Read user input
-userInput = read()
+    -- Read user input
+    local userInput = read()
 
--- Check if the password is correct
-if checkPassword(userInput) then
-    print("Password accepted. Access granted.")
-else
-    print("Incorrect password. Access denied.")
+    -- Check if the password is correct
+    if checkPassword(userInput) then
+        print("Password accepted. Access granted.")
+        break  -- Exit the loop and proceed with the rest of the program
+    else
+        print("Incorrect password. Please try again.")
+    end
 end
+
+-- Here you can place the rest of your control room code after the password is entered
